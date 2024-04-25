@@ -5,34 +5,29 @@
     </div>
 
     <div class="row mt-4">
-        <div class="col-lg-7">
+        <div class="col-lg-8">
             <div class="single_product_pics">
                 <div class="row">
-                    {{-- <div class="col-lg-3 thumbnails_col order-lg-1 order-2">
-                        <div class="single_product_thumbnails">
-                            <ul>
-                                <li><img src="{{URL::to('/')}}/images/{{$products->product_image}}" alt="" data-image="{{URL::to('/')}}/images/{{$products->product_image}}"></li>
-                                <li class="active"><img src="images/single_2_thumb.jpg" alt="" data-image="images/single_2.jpg"></li>
-                                <li><img src="images/single_3_thumb.jpg" alt="" data-image="images/single_3.jpg"></li>
-                            </ul>
-                        </div>
-                    </div> --}}
                     <div class="col-lg-9 image_col order-lg-2 order-1">
                         <div class="single_product_image">
                             <div class="single_product_image_background" style="background-image:url({{URL::to('/')}}/images/{{$products->product_image}})"></div>
+                        </div>
+                        <div class="product_description mt-4">
+                                <h4>Mô tả</h4>
+                                {!!$products->product_description!!}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-5">
-            <div class="product_details">
+        <div class="col-lg-4">
+            <div class="product_details position-fixed ">
                 <div class="product_details_title">
                     <h2 style="font-size: 24px">{{$products->product_name}}</h2>
                     {{-- <p>Mẫu áo khoác có màu sắc nâu nhạt, đường may tinh xảo, hài hòa. Thiết kế cổ áo chữ V cổ điển. Độ dày vừa phải giúp dễ dàng khoác ngoài, phù hợp với thời tiết thu đông...  </p> --}}
                 </div>
                 <div class="free_delivery d-flex flex-row align-items-center justify-content-center">
-                    <span class="ti-truck"></span><span>miễn phí vận chuyển</span>
+                    {{-- <span class="ti-truck"></span><span>miễn phí vận chuyển</span> --}}
                 </div>
                 @if($products->product_discount > 0)
                     <div class="original_price">{{number_format($products->product_price)}}</div>
@@ -40,21 +35,8 @@
                 @else
                     <div class="product_price">{{number_format($products->product_price)}}</div>
                 @endif
-                {{-- <ul class="star_rating">
-                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                    <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                </ul> --}}
                 <div class="product_color">
                     <span>Màu sắc: {{$products->product_color}}</span>
-                    {{-- <ul>
-                        <li style="background: #e54e5d"></li>
-                        <li style="background: #252525"></li>
-                        <li style="background: #60b3f3"></li>
-                        <li style="background: #8e4c06"></li>
-                    </ul> --}}
                 </div>
                 <div class="product_size">
                     <label for="">Chọn Size: 
@@ -105,7 +87,7 @@
     </div>
     	<!-- Tabs -->
 
-	<div class="tabs_section_container">
+	{{-- <div class="tabs_section_container">
 
 		<div class="container">
 
@@ -126,7 +108,7 @@
 
 		</div>
 
-	</div>
+	</div> --}}
 
 	<!-- Benefit -->
 

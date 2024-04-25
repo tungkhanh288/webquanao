@@ -19,5 +19,5 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/single_responsive.css')}}">
 <link rel="stylesheet" href="{{ asset('frontend/styles/cart.css')}}">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-
+<link rel="stylesheet" href="{{ asset('frontend/styles/detailProduct.css')}}">
 </head>

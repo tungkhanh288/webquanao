@@ -21,6 +21,7 @@
                                                     <div class="product-name">
                                                         <a href="{{url('detailProduct', $c['id'])}}">{{$c['name']}}</a>								 							                                                                                                           
                                                     </div>
+                                                    <span>Size: {{$c['size_name']}}</span>
                                                 </div>
                                                 <div class="col-md-4 quantity">
                                                     <label for="quantity">Số lượng:</label>

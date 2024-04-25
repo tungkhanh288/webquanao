@@ -73,21 +73,21 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="banner_item align-items-center" style="background-image:url({{asset('frontend/images/begai.webp')}}">
-                    <div class="banner_category mt-5">
+                    <div class="banner_category mt-5" style="border-radius: 50px; background-color: bisque">
                         <a href="{{url('category', 'begai')}}">BÉ GÁI</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="banner_item align-items-center" style="background-image:url({{asset('frontend/images/phukien.webp')}})">
-                    <div class="banner_category mt-5">
+                    <div class="banner_category mt-5" style="border-radius: 50px; background-color: bisque">
                         <a href="{{url('category', 'phukien')}}">PHỤ KIỆN</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="banner_item align-items-center" style="background-image:url({{asset('frontend/images/betrai.webp')}})">
-                    <div class="banner_category mt-5">
+                    <div class="banner_category mt-5" style="border-radius: 50px; background-color: bisque">
                         <a href="{{url('category', 'betrai')}}">BÉ TRAI</a>
                     </div>
                 </div>

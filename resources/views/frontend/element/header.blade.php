@@ -28,7 +28,28 @@
                                     </button>
                                 </form>
                             </li>
-                            <li><a href="{{url('login')}}"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                            <li>
+                                @if(!auth()->check())
+                                    <a href="{{url('login')}}"><i class="fa fa-user" aria-hidden="true"></i></a>
+                                @else
+                                <div class="dropdown">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+    Dropdown link
+  </a>
+
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
+                                @endif
+                            <!-- @if(!auth()->check())
+                                    <a href="{{url('login')}}"><i class="fa fa-user" aria-hidden="true"></i></a>
+                                @else
+                                    <a href="{{url('logout')}}" style="width: 140px">{{auth()->user()->name}}</a>
+                                @endif -->
+                            </li>
                             <li class="checkout">
                                 <a href="{{url('showCart')}}">
                                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
