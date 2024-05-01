@@ -28,33 +28,21 @@
                                     </button>
                                 </form>
                             </li>
-                            <li>
-                                @if(!auth()->check())
-                                    <a href="{{url('login')}}"><i class="fa fa-user" aria-hidden="true"></i></a>
-                                @else
-                                <div class="dropdown">
-  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-    Dropdown link
-  </a>
-
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-  </div>
-</div>
-                                @endif
-                            <!-- @if(!auth()->check())
-                                    <a href="{{url('login')}}"><i class="fa fa-user" aria-hidden="true"></i></a>
-                                @else
-                                    <a href="{{url('logout')}}" style="width: 140px">{{auth()->user()->name}}</a>
-                                @endif -->
-                            </li>
                             <li class="checkout">
                                 <a href="{{url('showCart')}}">
                                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                     {{-- <span id="checkout_items" class="checkout_items">2</span> --}}
                                 </a>
+                            </li>
+                            <li>
+                                @if(!auth()->check())
+                                    <a href="{{url('login')}}"><i class="fa fa-user" aria-hidden="true"></i></a>
+                                @else
+                                    <div class="d-flex justify-content-center">
+                                        <p class="mt-2" style="width: 100px">{{auth()->user()->name}}</p>
+                                        <a href="{{url('logout')}}"><i class="fa-solid fa-right-from-bracket"></i></a>
+                                    </div>
+                                @endif
                             </li>
                         </ul>
                         <div class="hamburger_container">

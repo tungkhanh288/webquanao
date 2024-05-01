@@ -14,6 +14,9 @@
           <label class="form-label">Loại size</label>
           <input type="text" class="form-control shadow" name="size_name" value="{{$size->size_name}}">
         </div>
+        @error('size_name')
+          <div class="text-danger">{{ $message }}</div>
+        @enderror
         <div class="text-center">
           <button type="submit" class="btn bg-gradient-primary my-4 mb-2">Sửa</button>
         </div>

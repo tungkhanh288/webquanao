@@ -13,6 +13,9 @@
           <label class="form-label">Loại sản phẩm</label>
           <input type="text" class="form-control" name="category_name">
         </div>
+        @error('category_name')
+          <div class="text-danger">{{$message}}</div>
+        @enderror
         <select name="category_gender" class="form-control border">
           <option value="Nam">Nam</option>
           <option value="Nữ">Nữ</option>

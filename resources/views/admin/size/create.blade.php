@@ -13,6 +13,9 @@
           <label class="form-label">Loại size</label>
           <input type="text" class="form-control" name="size_name">
         </div>
+        @error('size_name')
+          <div class="text-danger">{{ $message }}</div>
+        @enderror
         <div class="text-center">
           <button type="submit" class="btn bg-gradient-primary my-4 mb-2">Thêm mới</button>
         </div>

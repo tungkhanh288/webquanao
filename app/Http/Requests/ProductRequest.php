@@ -36,18 +36,21 @@ class ProductRequest extends FormRequest
             'category_id' => 'required'
         ];
     }
-    public function message()
+    public function messages()
     {
         return [
-            'product_name' => 'Tên sản phẩm không được để trống',
-            'product_price' => 'Giá không được để trống',
-            'product_discount' => 'Giá giảm không được để trống',
-            'product_image' => 'Hình ảnh không được để trống',
-            'product_color' => 'Mauf sắc không được để trống',
-            'size_id' => 'Size không được để trống',
-            'product_description' => 'Mô tả không được để trống',
-            'product_quantity' => 'Mô tả không được để trống',
-            'category_id' => 'Loại sản phẩm không được để trống'
+            'product_name.required' => 'Tên sản phẩm không được để trống',
+            'product_price.required' => 'Giá không được để trống',
+            'product_discount.required' => 'Giá giảm không được để trống',
+            'product_image.required' => 'Hình ảnh không được để trống',
+            'product_color.required' => 'Màu sắc không được để trống',
+            'product_description.required' => 'Mô tả không được để trống',
+            'quantities.*' => [
+                'required' => 'Số lượng không được để trống',
+                'integer' => 'Số lượng phải là chữ số',
+                'min' => 'Số lượng phải lớn hơn hoặc bằng 0'
+            ],
+            'category_id.required' => 'Loại sản phẩm không được để trống'
         ];
     }
 }

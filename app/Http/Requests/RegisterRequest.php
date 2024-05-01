@@ -26,8 +26,19 @@ class RegisterRequest extends FormRequest
         return [
             //
             'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:8|confirmed'
+            'email' => 'bail|required|email',
+            'password' => 'bail|required|min:8|confirmed'
+        ];
+    }
+    public function messages(){
+        return [
+            'name.required' => 'Tên không được để trống',
+            'email.required' => 'Email không được để trống',
+            'email.email' => 'Email không đúng định dạng',
+            'password.required' => 'Mật khẩu không được để trống',
+            'password.min' => 'Mật khẩu phải có ít nhất 8 ký tự',
+            'password.confirmed' => 'Xác nhận mật khẩu không đúng'
+
         ];
     }
 }

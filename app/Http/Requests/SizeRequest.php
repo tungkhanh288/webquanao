@@ -28,4 +28,9 @@ class SizeRequest extends FormRequest
             'size_name' => 'required'
         ];
     }
+    public function messages(){
+        return [
+            'size_name.required' => 'Tên size không được để trống'
+        ];
+    }
 }

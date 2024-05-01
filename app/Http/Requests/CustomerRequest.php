@@ -31,4 +31,15 @@ class CustomerRequest extends FormRequest
             'customer_address' => 'required',
         ];
     }
+    public function messages()
+    {
+        return [
+            'customer_name.required' => 'Tên khách hàng không được để trống',
+            'customer_phone.required' => 'Số điện thoại khách hàng không được để trống',
+            'customer_phone.digits_between' => 'Số điện thoại phải từ 10 đến 12 số',
+            'customer_email.email' => 'Email không đúng định dạng',
+            'customer_email.required' => 'Email khách hàng không được để trống',
+            'customer_address.required' => 'Địa chỉ khách hàng không được để trống',
+        ];
+    }
 }

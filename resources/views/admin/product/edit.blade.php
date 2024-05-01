@@ -59,29 +59,16 @@
           @error('product_color')
           <div class="text-danger">{{ $message }}</div>
         @enderror
-        {{-- <select name="size_id" class="form-control border">
-          <option value="">Chọn size</option>
-          @foreach($sizes as $size)
-              <option value="{{$size->size_id}}" @if($product->size_id === $size->size_id) selected @endif>{{$size->size_name}}</option>
-          @endforeach
-        </select>
-          @error('product_size')
-          <div class="text-danger">{{ $message }}</div>
-        @enderror
-        <div class="input-group input-group-outline my-3">
-            <label class="form-label">Số lượng</label>
-            <input type="text" class="form-control" name="product_quantity" value="{{$product->product_quantity}}">
-          </div>
-          @error('product_quantity')
-          <div class="text-danger">{{ $message }}</div>
-        @enderror --}}
         <h4>Số lượng</h4>
-        @foreach($quantities as $q)
+        @foreach($quantities as $key => $q)
         <div class="input-group input-group-outline my-3">
           <label class="form-label">Size: {{$q->size_name}}</label>
           <input type="number" name="quantities[{{ $q->size_id }}]"  class="form-control" value="{{$q->pivot->quantity}}" required>
           <input type="hidden" name="sizes[]" value="{{ $q->size_id }}">
         </div>
+        @error('quantities.' . $key)
+          <div class="text-danger">{{ $message }}</div>
+        @enderror
         @endforeach
           <div class="input-group input-group-outline my-3" style="display: inline">
             <p>Mô tả</p>

@@ -47,14 +47,23 @@
                       <label class="form-label">Name</label>
                       <input type="text" class="form-control" name="name">
                     </div>
+                    @error('name')
+                      <div class="text-danger">{{ $message }}</div>
+                    @enderror
                     <div class="input-group input-group-outline mb-3">
                       <label class="form-label">Email</label>
                       <input type="email" class="form-control" name="email">
                     </div>
+                    @error('email')
+                      <div class="text-danger">{{ $message }}</div>
+                    @enderror
                     <div class="input-group input-group-outline mb-3">
                       <label class="form-label">Password</label>
                       <input type="password" class="form-control @error('password') is-invalid @enderror" name="password">
                     </div>
+                    @error('password')
+                      <div class="text-danger">{{ $message }}</div>
+                    @enderror
                     <div class="input-group input-group-outline mb-3">
                         <label class="form-label">Confirm Password</label>
                         <input type="password" class="form-control" name="password_confirmation">

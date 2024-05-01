@@ -29,4 +29,9 @@ class CategoryRequest extends FormRequest
             'category_gender' => 'required'
         ];
     }
+    public function messages(){
+        return [
+            'category_name.required' => 'Loại sản phẩm không được để trống'
+        ];
+    }
 }
