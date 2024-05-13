@@ -12,7 +12,8 @@ class Bill extends Model
     protected $fillable = [
         'customer_id',
         'bill_date',
-        'bill_total'
+        'bill_total',
+        'bill_status'
     ];
 
 }

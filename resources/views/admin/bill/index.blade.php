@@ -18,6 +18,7 @@
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tên khách hàng</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tổng tiền</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Ngày đặt hàng</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                       <th class="text-secondary opacity-7"></th>
                     </tr>
@@ -41,7 +42,23 @@
                         <td>
                           <p class="text-xs font-weight-bold mb-0">{{$b->bill_date}}</p>
                       </td>
+                      <td>
+                        @if($b->bill_status == 'Chờ xác nhận' || $b->bill_status == 'Đang giao hàng')
+                        <p class="text-xs font-weight-bold mb-0">
+                          {{$b->bill_status}}
+                        </p>
+                        @elseif($b->bill_status == 'Hủy đơn')
+                        <p class="text-xs font-weight-bold mb-0 text-danger">
+                          {{$b->bill_status}}
+                        </p>
+                        @else
+                        <p class="text-xs font-weight-bold mb-0 text-success">
+                          {{$b->bill_status}}
+                        </p>
+                        @endif
+                    </td>
                         <td class="align-middle text-center text-sm d-flex justify-content-center">
+                          <a href="{{route('bill.edit', $b->bill_id)}}" class="btn btn-primary">Sửa</a>
                           <a href="{{route('bill.show', $b->bill_id)}}" class="btn btn-primary">Xem</a>
                         </td>
                     </tr>

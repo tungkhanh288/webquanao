@@ -13,7 +13,8 @@ class Bill_detail extends Model
         'bill_id',
         'product_id',
         'quantity',
-        'price'
+        'price',
+        'size_name'
     ];
 
 }

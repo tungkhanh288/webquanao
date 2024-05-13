@@ -18,7 +18,8 @@ class VnPayController extends Controller
     }
     public function payment(CustomerRequest $request)
     {  
-            DB::transaction(function () use ($request) {
+        DB::transaction(function () use ($request) {
+                $carts = Session::get('carts') ?? [];
                 $customer = Customer::query()->firstOrCreate([
                     'customer_email' => $request->get('customer_email'),
                     'customer_phone' => $request->get('customer_phone'),
@@ -29,20 +30,22 @@ class VnPayController extends Controller
 
                 $bill = new Bill;
                 $bill->customer_id = $customer->customer_id;
+                $bill->user_id = Session::get('user_id');
                 $bill->bill_date = now();
                 $bill->bill_total = Session::get('total');
 
                 $bill->save();
-                $carts = Session::get('carts') ?? [];
 
                 if (count($carts) > 0) {
                     foreach ($carts as $key => $item) {
                         $billDetail = new Bill_detail;
                         $billDetail->bill_id = $bill->bill_id;
                         $billDetail->product_id = $item['id'];
+                        $billDetail->size_name = $item['size_name'];
                         $billDetail->quantity = $item['qty'];
                         $billDetail->price = $item['price'];
                         $billDetail->save();
+
                         $product = Product::query()->findOrFail($item['id']);
                         $quantity = $product->sizes()
                         ->where('product_id', $item['id'])

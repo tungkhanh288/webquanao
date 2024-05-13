@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Product;
@@ -29,14 +30,6 @@ class CartController extends Controller
         $key = sprintf('product_id_%s', $product_id);
         $productKey = $key . '_size_' . $size_id;
         $quantity = $product->sizes()->pluck('quantity');
-        // // $id = $product->sizes()
-        // // ->where('product_id', $product_id)
-        // // ->where('sizes.size_id', $size_id)
-        // // ->select('quantity')
-        // // ->first();
-        // $size = Size::query()->findOrFail($size_id);
-        // $id = $size->size_id;
-        // dd(gettype($id));
         if (!array_key_exists($productKey, $carts)) {
             $carts[$productKey] = [
                 'id' => $product_id,
@@ -55,6 +48,8 @@ class CartController extends Controller
             $productCart['subtotal'] = $productCart['qty'] * $productCart['price'];
             $carts[$productKey] = $productCart;
         }
+        $user_id = Auth::id();
+        Session::put('user_id', $user_id);
         Session::put('carts', $carts);
         $this->totalCart();
         return Redirect(url('showCart'));
