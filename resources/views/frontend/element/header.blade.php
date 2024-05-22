@@ -14,9 +14,9 @@
                     <nav class="navbar">
                         <ul class="navbar_menu">
                             <li><a href="{{url('/')}}">TRANG CHỦ</a></li>
-                            {{-- <li><a href="#">CỬA HÀNG</a></li>
-                            <li><a href="#">BLOG</a></li>
-                            <li><a href="contact.html">LIÊN HỆ</a></li> --}}
+                            @if(auth()->check())
+                                <li><a href="{{url('manageOrder')}}">Đơn hàng</a></li>
+                            @endif
                         </ul>
                         <ul class="navbar_user">
                             <li>

@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
+use App\Bill;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
+
 class PageController extends Controller
 {
     //
@@ -63,5 +68,65 @@ class PageController extends Controller
         ->orderByRaw('RAND()')
         ->where('categories.category_gender', $key)->limit(8)->get();
         return view('frontend.category', compact('products'));
+    }
+    public function manageOrder(){
+        $user_id = Auth::id();
+        $bill = Bill::join('customers', 'bills.customer_id', 'customers.customer_id')
+        ->where('user_id', $user_id)
+        ->orderBy('bill_id', 'desc')
+        ->get();
+        // dd($bill);
+        $products = [];
+
+        foreach ($bill as $b){
+            if($b->user_id == $user_id){
+                $product = Bill::leftjoin('bill_details', 'bill_details.bill_id', 'bills.bill_id')
+                ->leftjoin('products', 'bill_details.product_id', 'products.product_id')
+                ->where('bills.bill_id', $b->bill_id)
+                ->select(
+                    'bills.bill_id',
+                    'products.product_id',
+                    'products.product_name',
+                    'bill_details.price',
+                    'bill_details.quantity',
+                    'bill_details.size_name'
+                )
+                ->orderBy('bill_id', 'desc')
+                ->get();
+                if ($product) {
+                    $products[] = $product;
+                }
+            }
+        }
+        // dd($products);
+
+        return view('frontend.manageOrder', compact('bill', 'products'));
+    }
+
+    public function cancelOrder($id){
+        DB::transaction(function () use ($id) {
+            $bill = Bill::findOrFail($id);
+            $bill->bill_status = 'Hủy đơn';
+            $bill->save();
+            $bills = Bill::join('bill_details', 'bill_details.bill_id', 'bills.bill_id')
+            ->join('sizes', 'sizes.size_name', 'bill_details.size_name')
+            ->where('bills.bill_id', $id)
+            ->select(
+                'bill_details.product_id',
+                'bill_details.size_name',
+                'bill_details.quantity',
+                'sizes.size_id'
+            )
+            ->get();
+            foreach($bills as $b){
+                $product = Product::query()->findOrFail($b['product_id']);
+                $quantity = $product->sizes()
+                ->where('product_id', $b['product_id'])
+                ->where('sizes.size_id', $b['size_id'])
+                ->first();
+                $product->sizes()->updateExistingPivot($b['size_id'], ['quantity' => $quantity->pivot->quantity+$b['quantity']]);
+            }
+        });
+        return redirect()->route('manageOrder');
     }
 }

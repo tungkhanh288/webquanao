@@ -12,9 +12,13 @@ class Bill_detail extends Model
     protected $fillable = [
         'bill_id',
         'product_id',
+        'size_name',
         'quantity',
-        'price',
-        'size_name'
+        'price'
     ];
 
+    public function product(): HasMany
+    {
+        return $this->hasMany(Product::class, 'product_id', 'product_id');
+    }
 }
