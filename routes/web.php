@@ -23,6 +23,9 @@ Route::get('logout', 'Auth\LoginController@logout');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('dashboard', 'admin\AdminController@index') ->name('dashboard');
+    Route::get('getOrderInMonth', 'admin\AdminController@getOrderInMonth')->name('getOrderInMonth');
+    Route::get('getOrderInWeek', 'admin\AdminController@getOrderInWeek')->name('getOrderInWeek');
+    Route::get('getOrderInDay', 'admin\AdminController@getOrderInDay')->name('getOrderInDay');
     Route::resource('category', 'admin\CategoryController');
     Route::resource('product', 'admin\ProductController');
     Route::resource('size', 'admin\SizeController');

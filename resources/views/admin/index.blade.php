@@ -8,7 +8,6 @@
     <!-- End Navbar -->
     <div class="container-fluid py-4">
       @yield('content')
-      @include('admin.element.footer')
     </div>
   </main>
   @include('admin.element.script')

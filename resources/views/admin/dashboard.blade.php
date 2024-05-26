@@ -8,7 +8,7 @@
                 <i class="fa-solid fa-calendar-week"></i>
               </div>
               <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Doanh thu trong 1 tháng</p>
+                <a href="{{route('getOrderInMonth')}}" class="text-sm mb-0 text-capitalize">Doanh thu trong 1 tháng</a>
                 <h4 class="mb-0">{{number_format($revenueMonth)}} VNĐ</h4>
               </div>
             </div>
@@ -31,7 +31,7 @@
                     <i class="fa-solid fa-calendar-week"></i>
                   </div>
                   <div class="text-end pt-1">
-                    <p class="text-sm mb-0 text-capitalize">Doanh thu trong 1 tuần</p>
+                    <a href="{{ route('getOrderInWeek')}}"class="text-sm mb-0 text-capitalize">Doanh thu trong 1 tuần</a>
                     <h4 class="mb-0">{{number_format($revenueWeek)}} VNĐ</h4>
                   </div>
                 </div>
@@ -54,7 +54,7 @@
                   <i class="fa-solid fa-calendar-week"></i>
                 </div>
                 <div class="text-end pt-1">
-                  <p class="text-sm mb-0 text-capitalize">Doanh thu trong ngày</p>
+                  <a href="{{ route('getOrderInDay')}}" class="text-sm mb-0 text-capitalize">Doanh thu trong ngày</a>
                   <h4 class="mb-0">{{number_format($revenueDay)}} VNĐ</h4>
                 </div>
               </div>

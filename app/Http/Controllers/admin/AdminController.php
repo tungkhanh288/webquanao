@@ -80,4 +80,33 @@ class AdminController extends Controller
         ));
     }
 
+    public function getOrderInMonth() {
+        $currentMonth = Carbon::now()->month;
+
+        $bills = Bill::join('customers', 'customers.customer_id', 'bills.customer_id')
+        ->whereMonth('bills.created_at', $currentMonth)
+        ->where('bills.bill_status', 'Thành công')
+        ->paginate(10);
+        // dd($bills);
+        return view('admin.OrderInMonth', compact('bills'));
+    }
+
+    public function getOrderInWeek() {
+        $startOfWeek = Carbon::now()->startOfWeek();
+        $endOfWeek = Carbon::now()->endOfWeek();
+
+        $bills = Bill::join('customers', 'customers.customer_id', 'bills.customer_id')
+        ->whereBetween('bills.created_at', [$startOfWeek, $endOfWeek])
+        ->paginate(10);
+        return view('admin.OrderInWeek', compact('bills'));
+    }
+
+    public function getOrderInDay() {
+        $today = Carbon::today();
+
+        $bills = Bill::join('customers', 'customers.customer_id', 'bills.customer_id')
+        ->whereDate('bills.created_at', $today)
+        ->paginate(10);
+        return view('admin.OrderInDay', compact('bills'));
+    }
 }

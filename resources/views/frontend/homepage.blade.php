@@ -298,49 +298,4 @@
     </div>
 </div>
 
-<!-- Blogs -->
-
-{{-- <div class="blogs">
-    <div class="container">
-        <div class="row">
-            <div class="col text-center">
-                <div class="section_title">
-                    <h2>BLOGS MỚI NHẤT</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row blogs_container">
-            <div class="col-lg-4 blog_item_col">
-                <div class="blog_item">
-                    <div class="blog_background" style="background-image:url({{asset('frontend/images/blog_1.jpg')}}"></div>
-                    <div class="blog_content d-flex flex-column align-items-center justify-content-center text-center">
-                        <h4 class="blog_title">Xu hướng thu đông 2022</h4>
-                        <span class="blog_meta">admin | 11/09/2022</span>
-                        <a class="blog_more" href="#">Đọc thêm</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 blog_item_col">
-                <div class="blog_item">
-                    <div class="blog_background" style="background-image:url({{asset('frontend/images/blog_2.jpg')}}"></div>
-                    <div class="blog_content d-flex flex-column align-items-center justify-content-center text-center">
-                        <h4 class="blog_title">Xu hướng thu đông 2022</h4>
-                        <span class="blog_meta">admin | 11/09/2022</span>
-                        <a class="blog_more" href="#">Đọc thêm</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 blog_item_col">
-                <div class="blog_item">
-                    <div class="blog_background" style="background-image:url({{asset('frontend/images/blog_3.jpg')}}"></div>
-                    <div class="blog_content d-flex flex-column align-items-center justify-content-center text-center">
-                        <h4 class="blog_title">Xu hướng thu đông 2022</h4>
-                        <span class="blog_meta">admin | 11/09/2022</span>
-                        <a class="blog_more" href="#">Đọc thêm</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
 @endsection
