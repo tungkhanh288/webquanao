@@ -85,7 +85,7 @@ class AdminController extends Controller
 
         $bills = Bill::join('customers', 'customers.customer_id', 'bills.customer_id')
         ->whereMonth('bills.created_at', $currentMonth)
-        ->where('bills.bill_status', 'Thành công')
+        ->where('bills.bill_status', '<>', 'Hủy đơn')
         ->paginate(10);
         // dd($bills);
         return view('admin.OrderInMonth', compact('bills'));
@@ -97,6 +97,7 @@ class AdminController extends Controller
 
         $bills = Bill::join('customers', 'customers.customer_id', 'bills.customer_id')
         ->whereBetween('bills.created_at', [$startOfWeek, $endOfWeek])
+        ->where('bills.bill_status', '<>', 'Hủy đơn')
         ->paginate(10);
         return view('admin.OrderInWeek', compact('bills'));
     }
@@ -106,6 +107,7 @@ class AdminController extends Controller
 
         $bills = Bill::join('customers', 'customers.customer_id', 'bills.customer_id')
         ->whereDate('bills.created_at', $today)
+        ->where('bills.bill_status', '<>', 'Hủy đơn')
         ->paginate(10);
         return view('admin.OrderInDay', compact('bills'));
     }

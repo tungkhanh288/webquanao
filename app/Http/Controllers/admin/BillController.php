@@ -95,18 +95,18 @@ class BillController extends Controller
         // dd($bills);
         
         DB::transaction(function () use ($id, $request, $bills) {
-            $customer = Customer::query()->firstOrCreate([
-                'customer_email' => $request->get('customer_email'),
-                'customer_phone' => $request->get('customer_phone'),
-            ], [
-                'customer_name' => $request->get('customer_name'),
-                'customer_address' => $request->get('customer_address'),
-            ]);
-
+            
             $bill = Bill::findOrFail($id);
             $bill->bill_status = $request->get('bill_status');
             $bill->save();
-
+            
+            $customer = Customer::findOrFail($bill->customer_id);
+            $customer->customer_name = $request->get('customer_name');
+            $customer->customer_phone = $request->get('customer_phone');
+            $customer->customer_email = $request->get('customer_email');
+            $customer->customer_address = $request->get('customer_address');
+            $customer->save();
+            
             if($request->get('bill_status') === 'Hủy đơn'){
                 foreach($bills as $b){
                     $product = Product::query()->findOrFail($b['product_id']);
